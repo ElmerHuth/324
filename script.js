@@ -3,12 +3,32 @@
 let playerhands = [[],[]]; // 2 players
 let deck = [];
 for (let i = 0; i < 4; i++){
-    for (let x = 0; x < 13; i++){
+    for (let x = 0; x < 13; x++){
         deck.push([x, i]);
     }
 }
 
 shuffle();
+deal(5);
+//console.log(handcontains(playerhands[0], [5,1]));
+console.log(mosthearts());
+
+function mosthearts(){
+    let points = [];
+    for(let i = 0; i < playerhands.length; i++){
+        points.push(0);
+    }
+    for(let i = 0; i < playerhands.length; i++){
+        for(let x = 0; x < playerhands[i].length; x++){
+            for(let y = 0; y < 13; y++){
+                if(playerhands[i][x] == [y,1]){
+                    points[i]++;
+                }
+            }
+        }
+    }
+    return points;
+}
 
 function deal(amount){
     for (let i = 0; i < amount; i++){
@@ -31,4 +51,18 @@ function shuffle(){
         deck.splice(randomindex, 1);
     }
     deck = newdeck;
+}
+
+function handcontains(hand, card, specific = false){
+    if (specific){
+        return hand.includes(card);
+    }
+    else{
+        for(let i = 0; i < hand.length; i++){
+            if (hand[i][0] == card[0]){
+                return true;
+            }
+        }
+        return false;
+    }
 }
