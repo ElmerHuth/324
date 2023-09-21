@@ -1,6 +1,6 @@
 // First number is the value, second is the sleeve
 // [3, 2] = Three of Diamonds
-let playerhands = [];
+let playerhands = [[],[]]; // 2 players
 let deck = [];
 for (let i = 0; i < 4; i++){
     for (let x = 0; x < 13; i++){
@@ -10,8 +10,13 @@ for (let i = 0; i < 4; i++){
 
 shuffle();
 
-function deal(){
-
+function deal(amount){
+    for (let i = 0; i < amount; i++){
+        for (let x = 0; i < playerhands.length; i++){
+            playerhands[i].push(deck[0]); // add card to players hand
+            deck.splice(0, 1); // remove card that was added from the deck
+        }
+    }
 }
 
 function shuffle(){
