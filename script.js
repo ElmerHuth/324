@@ -10,10 +10,15 @@ for (let suit of suits){
         deck.push(`${suit} ${value}`);
     }
 }
-console.log(deck);
 
 shuffle();
-deal(5);
+
+for (let player of playerhands){
+    deal(player, 5);
+}
+console.log(playerhands[0]);
+console.log(playerhands[1]);
+
 //console.log(handcontains(playerhands[0], [5,1]));
 console.log(mosthearts());
 
@@ -34,12 +39,10 @@ function mosthearts(){
     return points;
 }
 
-function deal(amount){
+function deal(hand, amount){
     for (let i = 0; i < amount; i++){
-        for (let x = 0; i < playerhands.length; i++){
-            playerhands[i].push(deck[0]); // add card to players hand
-            deck.splice(0, 1); // remove card that was added from the deck
-        }
+        hand.push(deck[0]); // add card to players hand
+        deck.splice(0, 1); // remove card that was added from the deck
     }
 }
 
