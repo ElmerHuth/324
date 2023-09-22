@@ -20,23 +20,13 @@ console.log(playerhands[0]);
 console.log(playerhands[1]);
 
 console.log(handcontains(playerhands[0], 'Hearts King'));
-console.log(mosthearts());
+console.log(mostaces());
 
-function mosthearts(){
-    let points = [];
-    for(let i = 0; i < playerhands.length; i++){
-        points.push(0);
-    }
-    for(let i = 0; i < playerhands.length; i++){
-        for(let x = 0; x < playerhands[i].length; x++){
-            for(let y = 0; y < 13; y++){
-                if(playerhands[i][x] == [y,1]){
-                    points[i]++;
-                }
-            }
-        }
-    }
-    return points;
+function mostaces(){
+    let points = []
+    points[0] = playerhands[0].reduce((acc, num) => num.includes('Ace') ? acc + 1 : acc, 0);
+    points[1] = playerhands[1].reduce((acc, num) => num.includes('Ace') ? acc + 1 : acc, 0);
+    console.log(points[0], points[1]);
 }
 
 function deal(hand, amount){
