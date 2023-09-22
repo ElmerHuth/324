@@ -1,12 +1,16 @@
 // First number is the value, second is the sleeve
 // [3, 2] = Three of Diamonds
 let playerhands = [[],[]]; // 2 players
+
+const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Knight', 'Queen', 'King', 'Ace'];
+const suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs'];
 let deck = [];
-for (let i = 0; i < 4; i++){
-    for (let x = 0; x < 13; x++){
-        deck.push([x, i]);
+for (let suit of suits){
+    for (let value of values){
+        deck.push(`${suit} ${value}`);
     }
 }
+console.log(deck);
 
 shuffle();
 deal(5);
