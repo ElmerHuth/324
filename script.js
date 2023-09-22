@@ -19,7 +19,7 @@ for (let player of playerhands){
 console.log(playerhands[0]);
 console.log(playerhands[1]);
 
-//console.log(handcontains(playerhands[0], [5,1]));
+console.log(handcontains(playerhands[0], 'Hearts King'));
 console.log(mosthearts());
 
 function mosthearts(){
@@ -60,16 +60,6 @@ function shuffle(){
     deck = newdeck;
 }
 
-function handcontains(hand, card, specific = false){
-    if (specific){
-        return hand.includes(card);
-    }
-    else{
-        for(let i = 0; i < hand.length; i++){
-            if (hand[i][0] == card[0]){
-                return true;
-            }
-        }
-        return false;
-    }
+function handcontains(hand, card){
+    return hand.includes(card);
 }
